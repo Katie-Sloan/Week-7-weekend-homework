@@ -34,7 +34,9 @@ export default {
   mounted() {
     this.getArticles(); 
 
-    eventBus.$on("article-selected", article => (this.selectedArticle = article));
+    eventBus.$on("article-selected", article => (this.selectedArticle = article)); 
+    eventBus.$on("reverse", seeData => this.sortArticlesInReverse());
+    eventBus.$on("re-order", seeData => this.sortArticles("webTitle"));
   },
   methods: {
     getArticles() {
@@ -48,13 +50,17 @@ export default {
         let articleData = data.map (article => article.response.results);
         this.seeData = [...articleData.flat(3)];
       })
-      .then(() => this.sortArticles("name"));
+      .then(() => this.sortArticles("webTitle"))
     },
     sortArticles: function(property) {
       this.seeData.sort((a, b) => {
         return a[property] < b[property] ? -1 : 1;
       });
-    }
+    },
+    sortArticlesInReverse: function() {
+      this.seeData.reverse();
+    }, 
+
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template lang="html">
-    <li>{{article.webTitle}}</li>
+    <li v-on:click="handleClick">{{article.webTitle}}</li>
     
      
 </template>
@@ -11,7 +11,7 @@ export default {
     name: "guardian-article-list-item",
     props: ["article"],
     methods: {
-        displayInfo: function(){
+        handleClick: function(){
             eventBus.$emit("article-selected", this.article);
         },
     }
