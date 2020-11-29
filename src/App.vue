@@ -1,28 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  name: "app",
+  data(){
+    return {
+      seeData: [], 
+    };
+  },
+  mounted() {
+    this.getArticles(); 
+  },
+  methods: {
+    getArticles() {
+      const promises = [1].map(item => {
+        return fetch(
+          'https://content.guardianapis.com/search?page=1&page-size=10&q=david+mitchell&format=json&section=commentisfree&from-date=2020-10-01&api-key=test'
+        ).then(res => res.json())
+    });
+    Promise.all(promises)
+      .then(data => {
+        let articleData = data.map (article => article.response.results);
+        this.seeData = [...articleData.flat(3)];
+        console.log(this.seeData);
+      })
+    },
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
