@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "fetch-mock": "^9.11.0",
+    "node-fetch": "^2.6.1",
     "vue": "^2.6.11"
   },
   "devDependencies": {

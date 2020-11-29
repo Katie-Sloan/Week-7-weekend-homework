@@ -1,7 +1,5 @@
-<template lang="html">
-    <li v-on:click="handleClick">{{article.webTitle}}</li>
-    
-     
+<template>
+    <li v-on:click="handleClick">{{article.webTitle}}</li> 
 </template>
 
 <script>

@@ -1,5 +1,5 @@
-<template lang="html">
-    <div class="article-list" v-if="seeData.length">
+<template>
+    <div v-if="seeData.length">
         <button v-on:click="sortInReverseAlphabetically">Sort In Reverse Alphabetical Order</button>
         <button v-on:click="returnToAlphabetical">Return to Alphabetical Order</button>
         <ul>
@@ -29,7 +29,7 @@ export default {
         },
         returnToAlphabetical() {
         eventBus.$emit("re-order");
-        }
+        }, 
     }
 }
 </script>

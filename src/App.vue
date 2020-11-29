@@ -2,7 +2,7 @@
   <div id="app">
     <guardian-header title="David Mitchell articles" />
     <guardian-header v-if="!seeData.length" title="LOADING..." />
-    <div id="list-info" v-if="seeData.length">
+    <div v-if="seeData.length">
       <guardian-article-list :seeData="seeData"></guardian-article-list>
       <guardian-article-info 
         v-if="selectedArticle"
@@ -60,7 +60,6 @@ export default {
     sortArticlesInReverse: function() {
       this.seeData.reverse();
     }, 
-
   }
 }
 </script>

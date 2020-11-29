@@ -1,11 +1,9 @@
 <template>
-  <div id="article-info-container">
+  <div>
       <guardian-header :title="article.webTitle" />
-      <div id="article-info">
-          <div id="article-text">
-              <p><b>Web publication date: </b>{{article.webPublicationDate}}</p>
-              <p><b>Url: </B>{{article.webUrl}}</p>
-          </div>
+      <div>
+          <p><b>Web publication date: </b>{{article.webPublicationDate}}</p>
+          <p><b>Url: </b>{{article.webUrl}}</p>
       </div>
   </div>
 </template>
